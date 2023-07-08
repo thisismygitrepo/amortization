@@ -15,10 +15,9 @@ def amortization_schedule(
     :return: Rows containing period, amount, interest, principal, balance, etc
     """
     amortization_amount = calculate_amortization_amount(principal, interest_rate, period)
-    adjusted_interest = interest_rate / 12
     balance = principal
     for number in range(1, period + 1):
-        interest = round(balance * adjusted_interest, 2)
+        interest = balance * interest_rate
         if number < period:
             principal = amortization_amount - interest
             balance -= principal
